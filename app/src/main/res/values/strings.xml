@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Projctwithapi</string>
+
+    <string name="yes">yes</string>
+    <string name="maybe">maybe</string>
+    <string name="no">no</string>
+
+</resources>

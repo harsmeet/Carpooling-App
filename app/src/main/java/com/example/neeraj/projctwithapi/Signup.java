@@ -22,7 +22,6 @@ public class Signup extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-
     }
 
     public void onSignUpClick(View v) {
@@ -46,7 +45,6 @@ public class Signup extends Activity {
                 Toast.makeText(Signup.this, "Wrong Password..!", Toast.LENGTH_SHORT).show();
             } else if (!helper.chkuser2(unamestr)) {
 //                   insert the details in database
-
                 Contact c = new Contact();
                 c.setName(namestr);
                 c.setEmail(emailstr);

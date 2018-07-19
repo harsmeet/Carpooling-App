@@ -17,12 +17,14 @@ import android.widget.Toast;
 
 public class Splash extends Activity {
 
+    Thread splashTread;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
         window.setFormat(PixelFormat.RGBA_8888);
     }
-    Thread splashTread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +33,10 @@ public class Splash extends Activity {
     }
 
     private void StartAnimations() {
-        try{
+        try {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.fadein);
             anim.reset();
-            LinearLayout l=(LinearLayout) findViewById(R.id.lin_lay);
+            LinearLayout l = (LinearLayout) findViewById(R.id.lin_lay);
             l.clearAnimation();
             l.startAnimation(anim);
 
@@ -53,7 +55,7 @@ public class Splash extends Activity {
                 try {
                     int waited = 0;
                     // Splash screen pause time
-                    while (waited < 5500) {
+                    while (waited < 5400) {
                         sleep(500);
                         waited += 500;
                     }
@@ -67,11 +69,9 @@ public class Splash extends Activity {
                 } finally {
                     Splash.this.finish();
                 }
-
             }
         };
         splashTread.start();
-
     }
 }
 

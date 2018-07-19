@@ -19,8 +19,6 @@ import java.util.Locale;
 public class Search_Ride extends AppCompatActivity {
 
     EditText g, h, i, j, k;
-
-
     Button plus, minus, op;
     String ss;
     int u;
@@ -141,10 +139,7 @@ public class Search_Ride extends AppCompatActivity {
 
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         g.setText(sdf.format(myCalendar.getTime()));
-
-
         final EditText ED = (EditText) findViewById(R.id.t2);
 
         ED.setOnClickListener(new View.OnClickListener() {

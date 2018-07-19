@@ -5,7 +5,6 @@ package com.example.neeraj.projctwithapi;
  */
 
 public class S_R_Saved {
-
     int id;
     private String date;
     private String Email;
@@ -60,7 +59,6 @@ public class S_R_Saved {
     public void setseat(String seat) {
         this.seat = seat;
     }
-
 }
 
 

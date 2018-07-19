@@ -18,7 +18,6 @@ import android.widget.Toast;
 public class Splash extends Activity {
 
     Thread splashTread;
-
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
@@ -39,7 +38,6 @@ public class Splash extends Activity {
             LinearLayout l = (LinearLayout) findViewById(R.id.lin_lay);
             l.clearAnimation();
             l.startAnimation(anim);
-
             anim = AnimationUtils.loadAnimation(this, R.anim.fadeout);
             anim.reset();
             ImageView iv = (ImageView) findViewById(R.id.splash);
@@ -65,7 +63,6 @@ public class Splash extends Activity {
                     startActivity(intent);
                     Splash.this.finish();
                 } catch (InterruptedException e) {
-                    // do nothing
                 } finally {
                     Splash.this.finish();
                 }

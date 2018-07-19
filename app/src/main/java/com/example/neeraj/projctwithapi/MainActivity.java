@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 SharedPreferences preferences;
     public static final String myprefnce="logdtl";
     public static final String key_id="eid";
-    //public static final String key_="eid";
 
     @Override
 
@@ -74,29 +73,6 @@ preferences=getSharedPreferences(myprefnce, Context.MODE_PRIVATE);
                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
             }
 
-//           String password = helper.chkuser(str,pass);
-//            if (pass.equals(password))
-//            {
-//
-//                Intent i = new Intent(MainActivity.this, Signinn.class);
-//
-//                i.putExtra("Username",str);
-//
-//                startActivity(i);
-//
-//            }
-//            else
-//            {
-//                Toast.makeText(MainActivity.this, "Wrong USER NAME & Password..!", Toast.LENGTH_SHORT).show();
-//            }
-
-
-
-//            Intent i = new Intent(MainActivity.this, Signinn.class);
-//
-//            i.putExtra("UserName",str);
-//
-//            startActivity(i);
         }
         if (v.getId() == R.id.signuphereb1) {
             Intent i = new Intent(MainActivity.this, Signup.class);

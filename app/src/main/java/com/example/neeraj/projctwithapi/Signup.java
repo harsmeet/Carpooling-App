@@ -43,12 +43,9 @@ public class Signup extends Activity {
 
             if (!passwdstr.equals(confmpasswdstr)) {
 
-//                popup msg
-
                 Toast.makeText(Signup.this, "Wrong Password..!", Toast.LENGTH_SHORT).show();
             } else if (!helper.chkuser2(unamestr)) {
 //                   insert the details in database
-//                Toast.makeText(Signup.this, "Password Matched..!", Toast.LENGTH_SHORT).show();
 
                 Contact c = new Contact();
                 c.setName(namestr);

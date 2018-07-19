@@ -7,29 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by neeraj on 05-07-2017.
+ * Created by hars on 05-07-2017.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    // @Override
-    private static final int DATABASE_VERSION = 1;
 
-    // Database Name
-    private static final String DATABASE_NAME = "finalda.db";
-    private static final String TABLE_USER = "regitruser1";
-
-//Signup database name
-
-    private static final String TABLE_NAME = "contacts";
-
-    private static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_UNAME = "uname";
     public static final String COLUMN_MOB = "Mob";
-    private static final String COLUMN_PASS = "pass";
-    SQLiteDatabase db;
-
     // User Table Columns names for table one
     public static final String COLUMN_USER_ID = "_id";
     public static final String COLUMN_USER_DATE = "user_date";
@@ -38,15 +22,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_DEST = "user_dest";
     public static final String COLUMN_USER_SEAT = "user_seat";
     public static final String COLUMN_CON_ID = "con_id";
-//    for name and mob. no. of user
-   // public static final String COLUMN_CON_ID = "id";
-
-
-
-    //for task table
-
-
-
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "finalda.db";
+    private static final String TABLE_USER = "regitruser1";
+    private static final String TABLE_NAME = "contacts";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_UNAME = "uname";
+    private static final String COLUMN_PASS = "pass";
+    SQLiteDatabase db;
     // create table sql query for one
     private String CREATE_USER_TABLE1 = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_DATE + " TEXT,"
@@ -56,8 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME + " TEXT,"
             + COLUMN_EMAIL + " TEXT," + COLUMN_UNAME + " TEXT, " + COLUMN_MOB + " TEXT, " + COLUMN_PASS + " TEXT " + ")";
-
-
 
 
     /**
@@ -74,7 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_TABLE1);
         db.execSQL(TABLE_CREATE);
 //        db.execSQL(CREATE_USER_TABLE2);
-        this.db=db;
+        this.db = db;
     }
 
     public void insertContact(Contact c) {
@@ -88,6 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
     public boolean chkuser(String usern, String Paswrd) {
         String[] columns =
                 {
@@ -123,6 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
 
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -134,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
     /**
      * This method is to create user record
      *
@@ -151,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(COLUMN_USER_SEAT, user.getSeat());
             values.put(COLUMN_CON_ID, user.getConid());
             // Inserting Row
-          long val= db.insert(TABLE_USER, null, values);
+            long val = db.insert(TABLE_USER, null, values);
             db.close();
         } catch (Exception e) {
             String f = e.toString();
@@ -163,11 +148,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getride2() {
         String query = "select * from " + TABLE_USER + "";
         SQLiteDatabase mydb = this.getReadableDatabase();
-        Cursor mcursor=null;
-        mcursor=mydb.rawQuery(query,null);
+        Cursor mcursor = null;
+        mcursor = mydb.rawQuery(query, null);
         mcursor.getCount();
-        if(mcursor != null)
-        {
+        if (mcursor != null) {
             mcursor.moveToFirst();
         }
         return mcursor;
@@ -269,8 +253,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return mCursor;
     }
-    public Cursor fetchAlldetails( String id) {
-        String selectQuery = "SELECT * from " + TABLE_NAME + " where "+ COLUMN_UNAME +"= '"+ id +"' ";
+
+    public Cursor fetchAlldetails(String id) {
+        String selectQuery = "SELECT * from " + TABLE_NAME + " where " + COLUMN_UNAME + "= '" + id + "' ";
         SQLiteDatabase mDb = this.getReadableDatabase();
         Cursor mCursor = null;
         mCursor = mDb.rawQuery(selectQuery, null);

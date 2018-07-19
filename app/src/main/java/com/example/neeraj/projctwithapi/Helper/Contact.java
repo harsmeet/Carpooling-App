@@ -6,7 +6,6 @@ package com.example.neeraj.projctwithapi.Helper;
 
 public class Contact {
 
-//    first stored karni id
 int id;
     String name,email,uname,mob,pass;
 
@@ -18,8 +17,6 @@ int id;
     {
         return this.id;
     }
-
-// id stored ethe takkk
 
     public void setName(String name)
     {

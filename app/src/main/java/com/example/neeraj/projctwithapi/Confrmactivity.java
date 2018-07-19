@@ -87,9 +87,6 @@ public class Confrmactivity extends AppCompatActivity {
             txtseats.setText("Total No. of Seats:" + seat);
             bn = (Button) findViewById(R.id.confm);
 
-//            plus = (Button) findViewById(R.id.buttonPlus);
-//            minus = (Button) findViewById(R.id.buttonMinus);
-
             cursor = myhelpr.fetchAlldetails(idd);
             if (cursor != null) {
                 cursor.moveToFirst();

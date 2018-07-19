@@ -24,45 +24,59 @@ import java.util.Locale;
 public class Plan_Ride extends AppCompatActivity {
 
 
+    public static final String myprefnce = "logdtl";
+    public static final String key_id = "eid";
     EditText w, t, a, b, numbr;
     SharedPreferences sharedPreferences;
-    public static final String myprefnce="logdtl";
-    public static final String key_id="eid";
-
-    String name,password;
     Button plus, minus, bn;
     String ss;
     int aa;
 
-    DatabaseHelper mydb=new DatabaseHelper(this);
-    User user =new User();
+    DatabaseHelper mydb = new DatabaseHelper(this);
+    User user = new User();
     Cursor cursor;
+    Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_ride);
 
 
-        w=(EditText)findViewById(R.id.editText3);
-        t=(EditText)findViewById(R.id.editText4);
+        w = (EditText) findViewById(R.id.editText3);
+        t = (EditText) findViewById(R.id.editText4);
 
-        a=(EditText)findViewById(R.id.editText5);
-        b=(EditText)findViewById(R.id.editText6);
+        a = (EditText) findViewById(R.id.editText5);
+        b = (EditText) findViewById(R.id.editText6);
 
         numbr = (EditText) findViewById(R.id.editText7);
 
         plus = (Button) findViewById(R.id.button8);
         minus = (Button) findViewById(R.id.button9);
 
-        bn=(Button)findViewById(R.id.button4);
+        bn = (Button) findViewById(R.id.button4);
 
         bn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
-                    sharedPreferences=getSharedPreferences(myprefnce, Context.MODE_PRIVATE);
-                    String value=sharedPreferences.getString(key_id, "");
+                    sharedPreferences = getSharedPreferences(myprefnce, Context.MODE_PRIVATE);
+                    String value = sharedPreferences.getString(key_id, "");
 
                     user.setDate(w.getText().toString().trim());
                     user.setEmail(t.getText().toString().trim());
@@ -76,56 +90,55 @@ public class Plan_Ride extends AppCompatActivity {
                     int cu = cursor.getCount();
 
                     Toast.makeText(Plan_Ride.this, Integer.toString(cu), Toast.LENGTH_LONG).show();
-                }
-                catch (Exception e) {
-                    Toast.makeText(Plan_Ride.this,e.toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
-
-        try{
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-
-                ss = numbr.getText().toString();
-                String d = ss;
-                aa = Integer.parseInt(d);
-                if (aa > 8) {
-                    Toast.makeText(Plan_Ride.this, "Max Number Reached", Toast.LENGTH_SHORT).show();
-                } else {
-                    aa = aa + 1;
-                    String sa = Integer.toString(aa);
-                    numbr.setText(sa);
-                }
-
-            }
-        });
-    } catch (Exception e) {
-        Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
-    }
 
         try {
-        minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ss = numbr.getText().toString();
-                String d = ss;
-                aa = Integer.parseInt(d);
-                if (aa <= 0) {
-                    Toast.makeText(Plan_Ride.this, "Min Number Reached", Toast.LENGTH_SHORT).show();
-                } else {
-                    aa = aa - 1;
-                    String sa = Integer.toString(aa);
-                    numbr.setText(sa);
+            plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View v) {
+
+                    ss = numbr.getText().toString();
+                    String d = ss;
+                    aa = Integer.parseInt(d);
+                    if (aa > 8) {
+                        Toast.makeText(Plan_Ride.this, "Max Number Reached", Toast.LENGTH_SHORT).show();
+                    } else {
+                        aa = aa + 1;
+                        String sa = Integer.toString(aa);
+                        numbr.setText(sa);
+                    }
+
                 }
-            }
-        });
-    } catch (Exception e) {
-        Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
-    }
+            });
+        } catch (Exception e) {
+            Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ss = numbr.getText().toString();
+                    String d = ss;
+                    aa = Integer.parseInt(d);
+                    if (aa <= 0) {
+                        Toast.makeText(Plan_Ride.this, "Min Number Reached", Toast.LENGTH_SHORT).show();
+                    } else {
+                        aa = aa - 1;
+                        String sa = Integer.toString(aa);
+                        numbr.setText(sa);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         try {
             final EditText ED = (EditText) findViewById(R.id.editText4);
@@ -165,26 +178,7 @@ public class Plan_Ride extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(Plan_Ride.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
-
     }
-
-
-    Calendar myCalendar = Calendar.getInstance();
-
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            // TODO Auto-generated method stub
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, monthOfYear);
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
-        }
-
-    };
 
     private void updateLabel() {
 
@@ -192,6 +186,7 @@ public class Plan_Ride extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         w.setText(sdf.format(myCalendar.getTime()));
-    }}
+    }
+}
 
 

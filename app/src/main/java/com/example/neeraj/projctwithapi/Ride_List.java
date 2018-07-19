@@ -62,8 +62,6 @@ public class Ride_List extends AppCompatActivity {
     }
 
     public void fill() {
-
-        // cursor=mydata.getride(source,depart,date);
         cursor = mydata.getride2();
         int ss = cursor.getCount();
         Toast.makeText(Ride_List.this, Integer.toString(ss), Toast.LENGTH_SHORT).show();
